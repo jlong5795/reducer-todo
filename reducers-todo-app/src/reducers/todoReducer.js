@@ -1,10 +1,14 @@
 export const todoReducer = (state, action) => {
     switch(action.type) {
-        case 'TOGGLE_COMPELTED':
-            return {
-                ...state,
-                completed: !state.completed
-            };
+        case 'TOGGLE_COMPLETED':
+        console.log('Reducer', action);
+            return state.map(task => {
+                if (task.id === action.payload) {
+                    return {...task, completed: !task.completed};
+                } else {
+                    return task
+                }
+            });
         case 'ADD_TODO':
             return [
                 ...state,
@@ -15,10 +19,7 @@ export const todoReducer = (state, action) => {
                 }
             ];
         case 'CLEAR_COMPLETED':
-            return {
-                ...state,
-                //logic to remove items with completed: true
-            }
+            return state.filter(task => !task.completed);
             
         default:
             return state;

@@ -11,6 +11,8 @@ const TodoList = (props) => {
                 task={task.item}
                 id={task.id}
                 completed={task.completed}
+                toggle={props.toggle}
+                key={task.id}
             />
             ))}
             {console.log("From Todo", props.state)}

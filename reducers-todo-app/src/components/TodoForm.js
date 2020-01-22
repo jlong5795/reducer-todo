@@ -8,12 +8,18 @@ const TodoForm = () =>  {
 
     const handleChanges = e => {
         setNewTask(e.target.value);
-    }
+    };
+
+    const toggle = (task) => {
+        dispatch({type: 'TOGGLE_COMPLETED', payload: task})
+        console.log('Toggle Happened')
+    };
     
     const onSubmit = e => {
         e.preventDefault()
         dispatch({type: 'ADD_TODO', payload: newTask})
-    }
+        setNewTask('');
+    };
     
    return (
     <div>
@@ -23,11 +29,15 @@ const TodoForm = () =>  {
                 name='task'
                 value={newTask}
                 onChange={handleChanges}
+                
             />
             <button >Add Task</button>
         </form>
-        <button>Clear Completed</button>
-        <TodoList state={state}/>
+        <button onClick={() => {dispatch({type: 'CLEAR_COMPLETED'})}} >Clear Completed</button>
+        <TodoList 
+            state={state}
+            toggle={toggle}
+        />
     </div>
     )
 };
