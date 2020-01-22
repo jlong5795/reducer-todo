@@ -6,12 +6,14 @@ export const todoReducer = (state, action) => {
                 completed: !state.completed
             };
         case 'ADD_TODO':
-            return {
+            return [
                 ...state,
+                {
                 item: action.payload,
                 completed: false,
                 id: Date.now()
-            }
+                }
+            ];
         case 'CLEAR_COMPLETED':
             return {
                 ...state,

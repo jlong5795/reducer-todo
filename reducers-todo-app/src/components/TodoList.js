@@ -1,20 +1,21 @@
 import React from 'react';
+
 import Todo from './Todo';
 
-const TodoList = props => {
-   console.log('TodoList', props.tasks);
+const TodoList = (props) => {
+
     return (
         <div className='task-list'>
-            {props.tasks.map(task => (
-                 <Todo 
-                    task={task.item}
-                    id={task.id}
-                    
-                />
-               
+            {props.state.map(task => (
+                <Todo 
+                task={task.item}
+                id={task.id}
+                completed={task.completed}
+            />
             ))}
+            {console.log("From Todo", props.state)}
         </div>
     )
 };
 
-export default TodoList;
+export default TodoList;                 
