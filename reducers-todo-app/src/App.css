@@ -1,0 +1,18 @@
+.App {
+  width: 50%;
+  margin: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.task {
+  background-color: white
+}
+.completed > p {
+  text-decoration: line-through black !important;
+  
+}
